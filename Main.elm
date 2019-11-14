@@ -1,16 +1,16 @@
-module Main exposing (..)
+module Main exposing (Model, Msg(..), Todo, initModel, main, sampleTodos, todoListView, todoView, update, view)
 
+import Browser
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onClick, onInput)
 
 
-main : Program Never Model Msg
 main =
-    Html.beginnerProgram
-        { model = initModel
-        , view = view
+    Browser.sandbox
+        { init = initModel
         , update = update
+        , view = view
         }
 
 
@@ -83,7 +83,7 @@ view model =
                 []
             , button [ onClick Add ] [ text "+" ]
             ]
-        , (todoListView model.todos)
+        , todoListView model.todos
         ]
 
 
